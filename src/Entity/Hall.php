@@ -42,5 +42,46 @@ class Hall
      */
     private $kinoteatrid;
 
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getRows(): ?int
+    {
+        return $this->rows;
+    }
+
+    public function setRows(int $rows): self
+    {
+        $this->rows = $rows;
+
+        return $this;
+    }
+
+    public function getSeatsinrow(): ?int
+    {
+        return $this->seatsinrow;
+    }
+
+    public function setSeatsinrow(int $seatsinrow): self
+    {
+        $this->seatsinrow = $seatsinrow;
+
+        return $this;
+    }
+
+    public function getKinoteatrid(): ?int
+    {
+        return $this->kinoteatrid;
+    }
+
+    public function setKinoteatrid(int $kinoteatrid): self
+    {
+        $this->kinoteatrid = $kinoteatrid;
+
+        return $this;
+    }
+
 
 }
