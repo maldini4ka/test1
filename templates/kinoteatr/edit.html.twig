@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Kinoteatr{% endblock %}
+
+{% block body %}
+    <h1>Edit Kinoteatr</h1>
+
+    {{ include('kinoteatr/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('kinoteatr_index') }}">back to list</a>
+
+    {{ include('kinoteatr/_delete_form.html.twig') }}
+{% endblock %}
