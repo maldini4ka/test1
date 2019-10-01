@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Userorder
  *
  * @ORM\Table(name="userorder")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\UserorderRepository")
  */
 class Userorder
 {
@@ -22,16 +22,16 @@ class Userorder
     private $id;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="userId", type="integer", nullable=false)
+     * @var User
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="userId", referencedColumnName="id")
      */
     private $userid;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="seansId", type="integer", nullable=false)
+     * @var Seans
+     * @ORM\ManyToOne(targetEntity="Seans")
+     * @ORM\JoinColumn(name="seansId", referencedColumnName="id")
      */
     private $seansid;
 

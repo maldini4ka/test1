@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Film
  *
  * @ORM\Table(name="film")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\FilmRepository")
  */
 class Film
 {
@@ -100,6 +100,11 @@ class Film
         $this->photourl = $photourl;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 
 

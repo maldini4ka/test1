@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Hall
  *
  * @ORM\Table(name="hall")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\HallRepository")
  */
 class Hall
 {
@@ -36,11 +36,12 @@ class Hall
     private $seatsinrow;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="kinoteatrId", type="integer", nullable=false)
+     * @var Kinoteatr
+     * @ORM\ManyToOne(targetEntity="Kinoteatr")
+     * @ORM\JoinColumn(name="kinoteatrId", referencedColumnName="id")
      */
     private $kinoteatrid;
+
 
     public function getId(): ?int
     {

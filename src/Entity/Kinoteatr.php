@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Kinoteatr
  *
  * @ORM\Table(name="kinoteatr")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\KinoteatrRepository")
  */
 class Kinoteatr
 {
@@ -82,6 +82,9 @@ class Kinoteatr
 
         return $this;
     }
-
+    public function __toString()
+    {
+        return $this->address;
+    }
 
 }

@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Seans
  *
  * @ORM\Table(name="seans")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\SeansRepository")
  */
 class Seans
 {
@@ -36,16 +36,16 @@ class Seans
     private $time;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="filmID", type="integer", nullable=false)
+     * @var Film
+     * @ORM\ManyToOne(targetEntity="Film")
+     * @ORM\JoinColumn(name="film_Id", referencedColumnName="id")
      */
     private $filmid;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="hallID", type="integer", nullable=false)
+     * @var Hall
+     * @ORM\ManyToOne(targetEntity="Hall")
+     * @ORM\JoinColumn(name="hallId", referencedColumnName="id")
      */
     private $hallid;
 
