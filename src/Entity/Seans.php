@@ -85,24 +85,24 @@ class Seans
         return $this;
     }
 
-    public function getFilmid(): ?int
+    public function getFilmid(): ?Film
     {
         return $this->filmid;
     }
 
-    public function setFilmid(int $filmid): self
+    public function setFilmid(Film $filmid): self
     {
         $this->filmid = $filmid;
 
         return $this;
     }
 
-    public function getHallid(): ?int
+    public function getHallid(): ?Hall
     {
         return $this->hallid;
     }
 
-    public function setHallid(int $hallid): self
+    public function setHallid(Hall $hallid): self
     {
         $this->hallid = $hallid;
 

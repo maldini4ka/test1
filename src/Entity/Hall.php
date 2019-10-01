@@ -42,6 +42,11 @@ class Hall
      */
     private $kinoteatrid;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $hallname;
+
 
     public function getId(): ?int
     {
@@ -72,16 +77,33 @@ class Hall
         return $this;
     }
 
-    public function getKinoteatrid(): ?int
+    public function getKinoteatrid(): ?Kinoteatr
     {
         return $this->kinoteatrid;
     }
 
-    public function setKinoteatrid(int $kinoteatrid): self
+    public function setKinoteatrid(Kinoteatr $kinoteatrid): self
     {
         $this->kinoteatrid = $kinoteatrid;
 
         return $this;
+    }
+
+    public function getHallname(): ?string
+    {
+        return $this->hallname;
+    }
+
+    public function setHallname(string $hallname): self
+    {
+        $this->hallname = $hallname;
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->hallname;
     }
 
 

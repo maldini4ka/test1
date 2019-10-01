@@ -66,7 +66,7 @@ class OrderProducts
         return $this->userorderid;
     }
 
-    public function setUserorderid(int $userorderid): self
+    public function setUserorderid(Userorder $userorderid): self
     {
         $this->userorderid = $userorderid;
 

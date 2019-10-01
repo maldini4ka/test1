@@ -47,12 +47,12 @@ class Userorder
         return $this->id;
     }
 
-    public function getUserid(): ?int
+    public function getUserid(): ?User
     {
         return $this->userid;
     }
 
-    public function setUserid(int $userid): self
+    public function setUserid(User $userid): self
     {
         $this->userid = $userid;
 
