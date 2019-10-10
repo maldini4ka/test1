@@ -1,0 +1,6 @@
+@import "header.scss";
+@import "~bootstrap";
+
+body {
+    background-color: lightgray;
+}

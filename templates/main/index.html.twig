@@ -1,0 +1,29 @@
+{#{% extends 'base.html.twig' %}#}
+
+{#{% block body %}#}
+{#<p><strong>Список страниц сайта!</strong></p>#}
+{#{% for page in pages %}#}
+{#    <div>#}
+{#    <h3>{{ page.title }}</h3>#}
+{#        {{ page.content }}#}
+{#    </div>#}
+{#{% endfor %}#}
+
+{#{% endblock %}#}
+
+<html>
+<head>
+
+</head>
+<body>
+
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+
+<button type="submit" class="button">Отправить</button>
+
+{{ form_end(form) }}
+
+
+</body>
+</html>
