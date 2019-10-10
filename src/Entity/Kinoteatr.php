@@ -22,9 +22,9 @@ class Kinoteatr
     private $id;
 
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\Column(name="info", type="integer", nullable=false)
+     * @ORM\Column(name="info", type="string", nullable=false)
      */
     private $info;
 
@@ -47,12 +47,12 @@ class Kinoteatr
         return $this->id;
     }
 
-    public function getInfo(): ?int
+    public function getInfo(): ?string
     {
         return $this->info;
     }
 
-    public function setInfo(int $info): self
+    public function setInfo(string $info): self
     {
         $this->info = $info;
 

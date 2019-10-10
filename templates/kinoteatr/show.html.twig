@@ -3,7 +3,34 @@
 {% block title %}Kinoteatr{% endblock %}
 
 {% block body %}
-    <h1>Kinoteatr</h1>
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col logo">
+                <img src="{{ asset('')}}" alt="">
+            </div>
+
+            <div class="col">
+                <ul>Время работы: <br>
+                    <li>пн-пт: 10 - 24</li>
+                    <li>сб-вс: 12-02</li>
+                </ul>
+            </div>
+
+            <div class="col">
+                <form action="">
+                    Вход в профиль:<br>
+                    <input type="email">  E-mail<br>
+                    <input type="password">  Password<br>
+                    <input type="submit" value="Войти">
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <h1>Кинотеатр {{ kinoteatr.info }}</h1>
 
     <table class="table">
         <tbody>
