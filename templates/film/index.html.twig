@@ -23,7 +23,7 @@
                 <td>{{ film.name }}</td>
                 <td>{{ film.category }}</td>
                 <td>{{ film.description }}</td>
-                <td>{{ film.photourl }}</td>
+                <td><img src="{{ film.photourl }}" width="80"></td>
                 <td>
                     <a href="{{ path('film_show', {'id': film.id}) }}">show</a>
                     <a href="{{ path('film_edit', {'id': film.id}) }}">edit</a>

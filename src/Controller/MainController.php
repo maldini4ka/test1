@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Film;
 use App\Form\TestFormType;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,46 +15,19 @@ class MainController extends AbstractController
     /**
      * @Route("/main", name="main")
      */
-    public function index(Request $request)
+    public function index(): Response
     {
+        $results=[];
+        $films = $this->getDoctrine()
+            ->getRepository(Film::class)
+            ->findBy([],['id'=>'DESC']);
+        for ($i = 0; $i <= 7 ; $i++){
 
-//        $pages = [
-//            [
-//            'title' => 'Заголовок 1',
-//            'content' => 'Контент 1'
-//            ],
-//            [
-//                'title' => 'Заголовок 2',
-//                'content' => 'Контент 2'
-//            ],
-//            [
-//                'title' => 'Заголовок 3',
-//                'content' => 'Контент 3'
-//            ],
-//            [
-//                'title' => 'Заголовок 4',
-//                'content' => 'Контент 4'
-//            ]
-//        ];
-//
-//
-//
-        $form = $this->createForm(TestFormType::class);
-
-        $form->handleRequest($request);
-
-
-        if ($form->isSubmitted() && $form->isValid()){
-            $data = $form->getData();
-            dump($data['title']);
+            $results[$i] = $films[$i];
         }
 
-
-
-
-
-
-        return $this->render('main/index.html.twig', ['form' => $form->createView()]);
-
+        return $this->render('main/index.html.twig', [
+            'results' => $results,
+        ]);
     }
 }

@@ -18,15 +18,15 @@ class FilmController extends AbstractController
      * @Route("/", name="film_index", methods={"GET"})
      */
     public function index(): Response
-    {
-        $films = $this->getDoctrine()
-            ->getRepository(Film::class)
-            ->findAll();
+{
+    $films = $this->getDoctrine()
+        ->getRepository(Film::class)
+        ->findAll();
 
-        return $this->render('film/index.html.twig', [
-            'films' => $films,
-        ]);
-    }
+    return $this->render('film/index.html.twig', [
+        'films' => $films,
+    ]);
+}
 
     /**
      * @Route("/new", name="film_new", methods={"GET","POST"})
