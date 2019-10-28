@@ -1,3 +1,7 @@
+
+
+
+
 <!DOCTYPE html>
 <!--
 Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 4
@@ -29,7 +33,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 <div class="d-flex align-items-center">
                     <div class="mr-auto">
                         <h3 class="m-subheader__title ">
-                           Сейчас в кинотеатрах:
+                            Авторизация
                         </h3>
                     </div>
 
@@ -40,92 +44,48 @@ License: You must have a valid license purchased only from themeforest(the above
                 <!--Begin::Main Portlet-->
                 <div class="row">
 
-                    {% for result in results %}
-                        <div class="col-xl-3">
-                            <!--begin:: Widgets/Blog-->
-                            <div class="m-portlet m-portlet--bordered-semi m-portlet--full-height ">
-                                <div class="m-portlet__head m-portlet__head--fit">
-                                    <div class="m-portlet__head-caption">
-                                        <div class="m-portlet__head-action">
-                                            <button type="button" class="btn btn-sm m-btn--pill  btn-brand">
-                                                {{ result.category }}
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="m-portlet__body">
-                                    <div class="m-widget19">
-                                        <div class="m-widget19__pic m-portlet-fit--top m-portlet-fit--sides" style="min-height-: 150px">
-                                            <img src="{{ result.photourl }}" alt="" height="400">
-                                            <h3 class="m-widget19__title m--font-light">
-                                                {{ result.name }}
-                                            </h3>
-                                            <div class="m-widget19__shadow"></div>
-                                        </div>
-                                        <div class="m-widget19__content">
+                    <form method="post">
+                        {% if error %}
+                            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                        {% endif %}
 
-                                            <div class="m-widget19__body">
-                                                <br><br>
-                                                {{ result.description }}
-                                            </div>
-                                        </div>
-                                        <div class="m-widget19__action">
-                                            <a href="/film/{{ result.id }}">
-                                            <button type="button" class="btn m-btn--pill btn-secondary m-btn m-btn--hover-brand m-btn--custom">
-                                                Выбрать сеанс.
-                                            </button></a>
-                                        </div>
-                                    </div>
-                                </div>
+                        {% if app.user %}
+                            <div class="mb-3">
+                                Вы вошли как {{ app.user.username }}, <a href="{{ path('app_logout') }}">Выйти.</a>
                             </div>
-                            <!--end:: Widgets/Blog-->
-                        </div>
+                        {% endif %}
 
-                    {% endfor %}
+                        <h1 class="h3 mb-3 font-weight-normal">Введите ваш E-mail и пароль:</h1>
+                        <label for="inputEmail" class="sr-only">Email</label>
+                        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+                        <label for="inputPassword" class="sr-only">Пароль</label>
+                        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+
+                        <input type="hidden" name="_csrf_token"
+                               value="{{ csrf_token('authenticate') }}"
+                        >
+
+                        {#
+                            Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                            See https://symfony.com/doc/current/security/remember_me.html
+
+                            <div class="checkbox mb-3">
+                                <label>
+                                    <input type="checkbox" name="_remember_me"> Remember me
+                                </label>
+                            </div>
+                        #}
+
+                        <button class="btn btn-lg btn-primary" type="submit">
+                            Войти
+                        </button>
+                    </form>
 
 
                 </div>
                 <!--End::Main Portlet-->
 
-                <!--Begin::Main Portlet-->
-                <div class="row">
-                    <div class="col-xl-12">
-                        <!--begin::Portlet-->
-                        <div class="m-portlet" id="m_portlet">
-                            <div class="m-portlet__head">
-                                <div class="m-portlet__head-caption">
-                                    <div class="m-portlet__head-title">
-												<span class="m-portlet__head-icon">
-													<i class="flaticon-map-location"></i>
-												</span>
-                                        <h3 class="m-portlet__head-text">
-                                            Calendar
-                                        </h3>
-                                    </div>
-                                </div>
-                                <div class="m-portlet__head-tools">
-                                    <ul class="m-portlet__nav">
-                                        <li class="m-portlet__nav-item">
-                                            <a href="#" class="btn btn-accent m-btn m-btn--custom m-btn--icon m-btn--pill m-btn--air">
-														<span>
-															<i class="la la-plus"></i>
-															<span>
-																Add Event
-															</span>
-														</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="m-portlet__body">
-                               <div id="m_calendar"></div>
-                            </div>
-                        </div>
-                        <!--end::Portlet-->
-                    </div>
-                </div>
-                <!--End::Main Portlet-->
+
 
 
 
@@ -778,17 +738,17 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- end::Scroll Top -->		    <!-- begin::Quick Nav -->
 <ul class="m-nav-sticky" style="margin-top: 30px;">
     <!--
-			<li class="m-nav-sticky__item" data-toggle="m-tooltip" title="Showcase" data-placement="left">
-				<a href="">
-					<i class="la la-eye"></i>
-				</a>
-			</li>
-			<li class="m-nav-sticky__item" data-toggle="m-tooltip" title="Pre-sale Chat" data-placement="left">
-				<a href="" >
-					<i class="la la-comments-o"></i>
-				</a>
-			</li>
-			-->
+            <li class="m-nav-sticky__item" data-toggle="m-tooltip" title="Showcase" data-placement="left">
+                <a href="">
+                    <i class="la la-eye"></i>
+                </a>
+            </li>
+            <li class="m-nav-sticky__item" data-toggle="m-tooltip" title="Pre-sale Chat" data-placement="left">
+                <a href="" >
+                    <i class="la la-comments-o"></i>
+                </a>
+            </li>
+            -->
     <li class="m-nav-sticky__item" data-toggle="m-tooltip" title="Purchase" data-placement="left">
         <a href="https://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes" target="_blank">
             <i class="la la-cart-arrow-down"></i>
