@@ -56,8 +56,14 @@ class FilmController extends AbstractController
      */
     public function show(Film $film): Response
     {
+        $results=[];
+        $films = $this->getDoctrine()
+            ->getRepository(Film::class)
+            ->findBy([],['id'=>'DESC']);
+
         return $this->render('film/show.html.twig', [
             'film' => $film,
+            'films' => $films
         ]);
     }
 
@@ -93,5 +99,39 @@ class FilmController extends AbstractController
         }
 
         return $this->redirectToRoute('film_index');
+    }
+
+
+    /**
+     * @Route("/category/{category}", name="film_category", methods={"GET"})
+     */
+    public function showcategory(Request $request)
+    {
+        $query = $request->get('category');
+        $results = [];
+        $i = 0;
+
+        $films = $this->getDoctrine()
+            ->getRepository(Film::class)
+            ->findBy([], ['name'=>'ASC']);
+
+        foreach ($films as $film){
+            if ($film->getCategory() == $query ){
+                $results[$i] = $film;
+                $i++;
+            }
+        }
+
+
+
+
+
+
+        return $this->render('film/showcategory.html.twig', [
+            'films' => $films,
+            'query' => $query,
+            'results' => $results
+        ]);
+
     }
 }

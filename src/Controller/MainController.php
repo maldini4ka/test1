@@ -26,6 +26,10 @@ class MainController extends AbstractController
         $films = $this->getDoctrine()
             ->getRepository(Film::class)
             ->findBy([],['id'=>'DESC']);
+
+        $filmcat = $this->getDoctrine()
+            ->getRepository(Film::class)
+            ->findBy([],['id'=>'DESC']);
         for ($i = 0; $i <= 7 ; $i++){
 
             $results[$i] = $films[$i];

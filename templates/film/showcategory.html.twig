@@ -24,7 +24,7 @@
                 <div class="d-flex align-items-center">
                     <div class="mr-auto">
                         <h3 class="m-subheader__title ">
-                            "{{ film.name }}"
+                            Поиск по: {{ query }}
                         </h3>
                     </div>
 
@@ -38,22 +38,36 @@
                 <div class="row">
 
                     <table class="table">
-                        <tbody>
+                        <thead>
                         <tr>
+
+                            <th>Name</th>
                             <th></th>
-                            <td><img src="{{ film.photourl }}" width="250"></td>
-                        </tr>
-
-
-                        <tr>
                             <th>Category</th>
-                            <td>{{ film.category }}</td>
-                        </tr>
-                        <tr>
                             <th>Description</th>
-                            <td>{{ film.description }}</td>
-                        </tr>
 
+                            <th>Сеансы:</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for result in results %}
+                            <tr>
+
+                                <td><h5>{{ result.name }}</h5></td>
+                                <td><img src="{{ result.photourl }}" width="120"></td>
+                                <td>{{ result.category }}</td>
+                                <td>{{ result.description }}</td>
+
+                                <td>
+                                    <a href="{{ path('film_show', {'id': result.id}) }}">show</a>
+                                    <a href="{{ path('film_edit', {'id': result.id}) }}">edit</a>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="6">no records found</td>
+                            </tr>
+                        {% endfor %}
                         </tbody>
                     </table>
 
