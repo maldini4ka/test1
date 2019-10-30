@@ -2,8 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Film;
 use App\Entity\Seans;
-use App\Form\Seans1Type;
+use App\Form\SeansType;
 use App\Repository\SeansRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,8 +21,14 @@ class SeansController extends AbstractController
      */
     public function index(SeansRepository $seansRepository): Response
     {
+        $films = $this->getDoctrine()
+            ->getRepository(Film::class)
+            ->findBy([],['id'=>'DESC']);
+
+
         return $this->render('seans/index.html.twig', [
-            'seans' => $seansRepository->findAll(),
+            'seans' => $seansRepository->findBy([],['date'=>'ASC']),
+            'films' => $films
         ]);
     }
 
@@ -31,7 +38,7 @@ class SeansController extends AbstractController
     public function new(Request $request): Response
     {
         $sean = new Seans();
-        $form = $this->createForm(Seans1Type::class, $sean);
+        $form = $this->createForm(SeansType::class, $sean);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -53,8 +60,13 @@ class SeansController extends AbstractController
      */
     public function show(Seans $sean): Response
     {
+        $films = $this->getDoctrine()
+            ->getRepository(Film::class)
+            ->findBy([],['id'=>'DESC']);
+
         return $this->render('seans/show.html.twig', [
             'sean' => $sean,
+            'films' => $films
         ]);
     }
 
@@ -63,7 +75,7 @@ class SeansController extends AbstractController
      */
     public function edit(Request $request, Seans $sean): Response
     {
-        $form = $this->createForm(Seans1Type::class, $sean);
+        $form = $this->createForm(SeansType::class, $sean);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -91,4 +103,7 @@ class SeansController extends AbstractController
 
         return $this->redirectToRoute('seans_index');
     }
+
+
+
 }

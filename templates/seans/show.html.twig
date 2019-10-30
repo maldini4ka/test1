@@ -1,34 +1,85 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
 
-{% block title %}Seans{% endblock %}
+<html lang="en" >
 
-{% block body %}
-    <h1>Seans</h1>
+{{ include('head.html.twig') }}
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ sean.id }}</td>
-            </tr>
-            <tr>
-                <th>Date</th>
-                <td>{{ sean.date ? sean.date|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Time</th>
-                <td>{{ sean.time ? sean.time|date('H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Price</th>
-                <td>{{ sean.price }}</td>
-            </tr>
-        </tbody>
-    </table>
 
-    <a href="{{ path('seans_index') }}">back to list</a>
+<body class="m-page--fluid m--skin- m-content--skin-light2 m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--skin-dark m-aside-left--offcanvas m-footer--push m-aside--offcanvas-default"  >
+<!-- begin:: Page -->
 
-    <a href="{{ path('seans_edit', {'id': sean.id}) }}">edit</a>
+<div class="m-grid m-grid--hor m-grid--root m-page">
 
-    {{ include('seans/_delete_form.html.twig') }}
-{% endblock %}
+    {{ include('header.html.twig') }}
+
+    <!-- begin::Body -->
+    <div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body">
+
+        {{ include('leftsidebar.html.twig') }}
+
+        <div class="m-grid__item m-grid__item--fluid m-wrapper">
+
+            <!-- BEGIN: Subheader -->
+            <div class="m-subheader ">
+                <div class="d-flex align-items-center">
+                    <div class="mr-auto">
+                        <h3 class="m-subheader__title ">
+                            Выбор места:
+                        </h3>
+                    </div>
+
+                </div>
+            </div>
+            <!-- END: Subheader -->
+
+
+            <div class="m-content">
+                <!--Begin::Main Portlet-->
+                <div class="row">
+
+                    <table class="table">
+                        <tbody>
+                        <tr>
+                            <th>Фильм:</th>
+                            <td><h4>"{{ sean.filmid.name }}"</h4><br>
+                                <img src="{{ sean.filmid.photourl }}" width="200">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Дата сеанса:</th>
+                            <td>{{ sean.date ? sean.date|date('d-m-Y') : '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Время начала сеанса:</th>
+                            <td>{{ sean.time ? sean.time|date('H:i:s') : '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Стоимость билета:</th>
+                            <td>{{ sean.price }} BYN</td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+
+                    <a href="{{ path('seans_index') }}">back to list</a>
+
+                </div>
+                <!--End::Main Portlet-->
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+    <!-- end:: Body -->
+    {% include ('footer.html.twig') %} }
+
+</div>
+<!-- end:: Page -->
+
+
+</body>
+<!-- end::Body -->
+</html>

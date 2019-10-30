@@ -1,0 +1,9 @@
+{% block title %}Список сеансов:{% endblock %}
+
+{% block body %}
+
+    <br><br>
+    {% for seans in seanses %}
+        {{ seans.date|date('Y-m-d') }}<br><br>
+    {%  endfor %}
+{% endblock %}

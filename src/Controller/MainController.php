@@ -31,10 +31,9 @@ class MainController extends AbstractController
             $results[$i] = $films[$i];
         }
 
-
-
         return $this->render('main/index.html.twig', [
             'results' => $results,
+            'films' => $films
              ]);
     }
 

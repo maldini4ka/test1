@@ -1,39 +1,89 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
 
-{% block title %}Seans index{% endblock %}
+<html lang="en" >
 
-{% block body %}
-    <h1>Seans index</h1>
+{{ include('head.html.twig') }}
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Date</th>
-                <th>Time</th>
-                <th>Price</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for sean in seans %}
-            <tr>
-                <td>{{ sean.id }}</td>
-                <td>{{ sean.date ? sean.date|date('Y-m-d') : '' }}</td>
-                <td>{{ sean.time ? sean.time|date('H:i:s') : '' }}</td>
-                <td>{{ sean.price }}</td>
-                <td>
-                    <a href="{{ path('seans_show', {'id': sean.id}) }}">show</a>
-                    <a href="{{ path('seans_edit', {'id': sean.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
 
-    <a href="{{ path('seans_new') }}">Create new</a>
-{% endblock %}
+<body class="m-page--fluid m--skin- m-content--skin-light2 m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--skin-dark m-aside-left--offcanvas m-footer--push m-aside--offcanvas-default"  >
+<!-- begin:: Page -->
+
+<div class="m-grid m-grid--hor m-grid--root m-page">
+
+    {{ include('header.html.twig') }}
+
+    <!-- begin::Body -->
+    <div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body">
+
+        {{ include('leftsidebar.html.twig') }}
+
+        <div class="m-grid__item m-grid__item--fluid m-wrapper">
+
+            <!-- BEGIN: Subheader -->
+            <div class="m-subheader ">
+                <div class="d-flex align-items-center">
+                    <div class="mr-auto">
+                        <h3 class="m-subheader__title ">
+                            Список сеансов:
+                        </h3>
+                    </div>
+
+                </div>
+            </div>
+            <!-- END: Subheader -->
+
+
+            <div class="m-content">
+                <!--Begin::Main Portlet-->
+                <div class="row">
+
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Дата:</th>
+                            <th>Время начала:</th>
+                            <th>Стоимость билета:</th>
+                            <th>Фильм:</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for sean in seans %}
+                            <tr>
+                                <td>{{ sean.date ? sean.date|date('d-m-Y') : '' }}</td>
+                                <td>{{ sean.time ? sean.time|date('H:i:s') : '' }}</td>
+                                <td>{{ sean.price }}</td>
+                                <td>{{ sean.filmid }}</td>
+                                <td>
+                                    <a href="{{ path('seans_show', {'id': sean.id}) }}">Выбрать сеанс.</a>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="5">no records found</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+
+                </div>
+                <!--End::Main Portlet-->
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+    <!-- end:: Body -->
+    {% include ('footer.html.twig') %} }
+
+</div>
+<!-- end:: Page -->
+
+
+</body>
+<!-- end::Body -->
+</html>

@@ -37,7 +37,7 @@ class Seans
 
     /**
      * @var Film
-     * @ORM\ManyToOne(targetEntity="Film")
+     *@ORM\ManyToOne(targetEntity="Film")
      * @ORM\JoinColumn(name="film_Id", referencedColumnName="id")
      */
     private $filmid;
@@ -55,6 +55,8 @@ class Seans
      * @ORM\Column(name="price", type="integer", nullable=false)
      */
     private $price;
+
+
 
     public function getId(): ?int
     {
@@ -117,6 +119,18 @@ class Seans
     public function setPrice(int $price): self
     {
         $this->price = $price;
+
+        return $this;
+    }
+
+    public function getFilmtestid(): ?Filmtest
+    {
+        return $this->filmtestid;
+    }
+
+    public function setFilmtestid(?Filmtest $filmtestid): self
+    {
+        $this->filmtestid = $filmtestid;
 
         return $this;
     }

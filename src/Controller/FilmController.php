@@ -21,7 +21,7 @@ class FilmController extends AbstractController
 {
     $films = $this->getDoctrine()
         ->getRepository(Film::class)
-        ->findAll();
+        ->findBy([],['name'=>'ASC']);
 
     return $this->render('film/index.html.twig', [
         'films' => $films,

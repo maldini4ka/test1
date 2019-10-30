@@ -49,6 +49,40 @@ class Film
      */
     private $photourl;
 
+
+
+//    /**
+//     *@ORM\OneToMany(targetEntity="Seans" mappedBy="filmid")
+//     */
+//     private $seanses;
+
+//    /**
+//     * Film constructor.
+//     * @param $seanses
+//     */
+//    public function __construct($seanses)
+//    {
+//        $this->seanses = $seanses;
+//    }
+//
+//    /**
+//     * @return mixed
+//     */
+//    public function getSeanses()
+//    {
+//        return $this->seanses;
+//    }
+//
+//    /**
+//     * @param mixed $seanses
+//     */
+//    public function setSeanses($seanses): void
+//    {
+//        $this->seanses = $seanses;
+//    }
+
+
+
     public function getId(): ?int
     {
         return $this->id;
