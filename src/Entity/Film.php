@@ -2,7 +2,6 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -37,11 +36,6 @@ class Film
     private $category;
 
     /**
-     *@ORM\OneToMany( targetEntity="Seans", mappedBy="filmid")
-     */
-    private $seanseid;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="description", type="text", length=65535, nullable=false)
@@ -62,13 +56,8 @@ class Film
 //    private $seanses;
 
 
-    /**
-     * @return mixed
-     */
-    public function __construct()
-    {
-        return $this->seanseid = new ArrayCollection();
-    }
+
+
 
     public function getId(): ?int
     {

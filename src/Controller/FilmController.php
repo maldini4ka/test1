@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Film;
+use App\Entity\Seans;
 use App\Form\FilmType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -61,9 +62,15 @@ class FilmController extends AbstractController
             ->getRepository(Film::class)
             ->findBy([],['id'=>'DESC']);
 
+        $seanses =$this->getDoctrine()
+            ->getRepository(Seans::class)
+            ->findBy(['filmid' => $film]);
+
+
         return $this->render('film/show.html.twig', [
             'film' => $film,
-            'films' => $films
+            'films' => $films,
+            'seanses' => $seanses
         ]);
     }
 

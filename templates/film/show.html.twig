@@ -53,6 +53,15 @@
                             <th>Description</th>
                             <td>{{ film.description }}</td>
                         </tr>
+                        <tr>
+                            <th>Сеансы</th>
+                            <td>
+                            {% for seans in seanses %}
+                                {{ seans.date ? seans.date|date('d-m-Y') : '' }}
+                                {% endfor %}
+                            </td>
+                        </tr>
+
 
                         </tbody>
                     </table>

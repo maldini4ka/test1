@@ -57,16 +57,38 @@
                             <th>Стоимость билета:</th>
                             <td>{{ sean.price }} BYN</td>
                         </tr>
+
+                        <tr>
+                            <th>Тест:</th>
+                            <td>{{ sean.filmid }}</td>
+                        </tr>
+
+
                         <tr>
                             <th>Список мест:</th>
-                            <td>{% for j in 1..seats.rows %}
-                                    {% for i in 1..seats.SeatsInRow %}
+                            <td>
 
-                                        <b>{{ j }}</b><b>:</b><b>{{ i }}  </b> ___
-                                    {% endfor %}
-                                    <br><hr>
+                                <table class="table table-sm"">
 
-                                {% endfor %}</td>
+                                    <tbody>
+                                            {% for j in 1..seats.rows %}
+                                                <tr>
+
+                                                     {% for i in 1..seats.SeatsInRow %}
+                                                        <td>
+                                                            <span class="badge badge-success">{{ j }}.{{ i }}</span>
+                                                        </td>
+                                                     {% endfor %}
+
+                                                </tr>
+                                            {% endfor %}
+
+
+                                    </tbody>
+                                </table>
+
+
+                            </td>
                         </tr>
 
 
