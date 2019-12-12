@@ -36,8 +36,7 @@ class Seans
     private $time;
 
     /**
-     * @var Film
-     *@ORM\ManyToOne(targetEntity="Film")
+     *@ORM\ManyToOne(targetEntity="Film", inversedBy="films")
      * @ORM\JoinColumn(name="film_Id", referencedColumnName="id")
      */
     private $filmid;

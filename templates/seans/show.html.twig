@@ -57,6 +57,18 @@
                             <th>Стоимость билета:</th>
                             <td>{{ sean.price }} BYN</td>
                         </tr>
+                        <tr>
+                            <th>Список мест:</th>
+                            <td>{% for j in 1..seats.rows %}
+                                    {% for i in 1..seats.SeatsInRow %}
+
+                                        <b>{{ j }}</b><b>:</b><b>{{ i }}  </b> ___
+                                    {% endfor %}
+                                    <br><hr>
+
+                                {% endfor %}</td>
+                        </tr>
+
 
                         </tbody>
                     </table>

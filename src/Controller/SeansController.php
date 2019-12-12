@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Film;
+use App\Entity\Hall;
 use App\Entity\Seans;
 use App\Form\SeansType;
 use App\Repository\SeansRepository;
@@ -64,9 +65,16 @@ class SeansController extends AbstractController
             ->getRepository(Film::class)
             ->findBy([],['id'=>'DESC']);
 
+        $seats = $this->getDoctrine()
+            ->getRepository(Hall::class)
+            ->findOneBy(['id'=>$sean->getHallid() ]);
+
+
+
         return $this->render('seans/show.html.twig', [
             'sean' => $sean,
-            'films' => $films
+            'films' => $films,
+            'seats' => $seats
         ]);
     }
 
