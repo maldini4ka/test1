@@ -51,7 +51,7 @@
 
                     <div class="col-4" align="center">
                         {% if is_granted("ROLE_USER") %}
-                        Вы вошли как <b>{{ app.user.username }}</b>,<br> <a href="{{ path('app_logout') }}">Выйти.
+                        {% if is_granted('ROLE_ADMIN') %} Многоуважаемый АДМИТНИСТРАТОР,  {% endif %}Вы вошли как <b>{{ app.user.username }}</b>,<br> <a href="{{ path('app_logout') }}">Выйти.
                             {% else %}
                                 Чтобы заказать билеты <a href="{{ path('app_login') }}">ВОЙДИТЕ,</a><br>
                                 или <a href="{{ path('register') }}">Зарегистрируйтесь</a>, если вы не зарегистрированы.
