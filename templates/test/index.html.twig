@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<html lang="en" >
+
+{{ include('head.html.twig') }}
+
+<body class="m-page--fluid m--skin- m-content--skin-light2 m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--skin-dark m-aside-left--offcanvas m-footer--push m-aside--offcanvas-default"  >
+<!-- begin:: Page -->
+<div class="m-grid m-grid--hor m-grid--root m-page">
+    {{ include('header.html.twig') }}
+    <!-- begin::Body -->
+    <div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body">
+        {{ include('leftsidebar.html.twig') }}
+        <div class="m-grid__item m-grid__item--fluid m-wrapper">
+            <!-- BEGIN: Subheader -->
+            <div class="m-subheader ">
+                <div class="d-flex align-items-center">
+                    <div class="mr-auto">
+                        <h3 class="m-subheader__title ">
+                            Сейчас в кинотеатрах:
+                        </h3>
+                    </div>
+
+                </div>
+            </div>
+            <!-- END: Subheader -->
+            <div class="m-content">
+{#                <!--Begin::Main Portlet-->#}
+{#                <div class="row">#}
+
+{#                    {% for result in results %}#}
+{#                        <div class="col-xl-3">#}
+{#                            <!--begin:: Widgets/Blog-->#}
+{#                            <div class="m-portlet m-portlet--bordered-semi m-portlet--full-height ">#}
+{#                                <div class="m-portlet__head m-portlet__head--fit">#}
+{#                                    <div class="m-portlet__head-caption">#}
+{#                                        <div class="m-portlet__head-action">#}
+{#                                            <button type="button" class="btn btn-sm m-btn--pill  btn-brand">#}
+{#                                                {{ result.category }}#}
+{#                                            </button>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                                <div class="m-portlet__body">#}
+{#                                    <div class="m-widget19">#}
+{#                                        <div class="m-widget19__pic m-portlet-fit--top m-portlet-fit--sides" style="min-height-: 150px">#}
+{#                                            <img src="{{ result.photourl }}" alt="" height="400">#}
+{#                                            <h3 class="m-widget19__title m--font-light">#}
+{#                                                {{ result.name }}#}
+{#                                            </h3>#}
+{#                                            <div class="m-widget19__shadow"></div>#}
+{#                                        </div>#}
+{#                                        <div class="m-widget19__content">#}
+
+{#                                            <div class="m-widget19__body">#}
+{#                                                <br><br>#}
+{#                                                {{ result.description }}#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                        <div class="m-widget19__action">#}
+{#                                            <a href="/film/{{ result.id }}">#}
+{#                                                <button type="button" class="btn m-btn--pill btn-secondary m-btn m-btn--hover-brand m-btn--custom">#}
+{#                                                    Выбрать сеанс.#}
+{#                                                </button></a>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <!--end:: Widgets/Blog-->#}
+{#                        </div>#}
+
+{#                    {% endfor %}#}
+
+
+{#                </div>#}
+{#                <!--End::Main Portlet-->#}
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+    <!-- end:: Body -->
+    <!-- begin::Footer -->
+    <footer class="m-grid__item		m-footer ">
+        <div class="m-container m-container--fluid m-container--full-height m-page__container">
+            <div class="m-stack m-stack--flex-tablet-and-mobile m-stack--ver m-stack--desktop">
+                <div class="m-stack__item m-stack__item--left m-stack__item--middle m-stack__item--last">
+							<span class="m-footer__copyright">
+								2017 &copy; Metronic theme by
+								<a href="#" class="m-link">
+									Keenthemes
+								</a>
+							</span>
+                </div>
+                <div class="m-stack__item m-stack__item--right m-stack__item--middle m-stack__item--first">
+                    <ul class="m-footer__nav m-nav m-nav--inline m--pull-right">
+                        <li class="m-nav__item">
+                            <a href="#" class="m-nav__link">
+										<span class="m-nav__link-text">
+											About
+										</span>
+                            </a>
+                        </li>
+                        <li class="m-nav__item">
+                            <a href="#"  class="m-nav__link">
+										<span class="m-nav__link-text">
+											Privacy
+										</span>
+                            </a>
+                        </li>
+                        <li class="m-nav__item">
+                            <a href="#" class="m-nav__link">
+										<span class="m-nav__link-text">
+											T&C
+										</span>
+                            </a>
+                        </li>
+                        <li class="m-nav__item">
+                            <a href="#" class="m-nav__link">
+										<span class="m-nav__link-text">
+											Purchase
+										</span>
+                            </a>
+                        </li>
+                        <li class="m-nav__item m-nav__item">
+                            <a href="#" class="m-nav__link" data-toggle="m-tooltip" title="Support Center" data-placement="left">
+                                <i class="m-nav__link-icon flaticon-info m--icon-font-size-lg3"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- end::Footer -->
+</div>
+<!-- end:: Page -->
+
+<!-- begin::Quick Nav -->
+<!--begin::Base Scripts -->
+<script src="assets/vendors/base/vendors.bundle.js" type="text/javascript"></script>
+<script src="assets/demo/default/base/scripts.bundle.js" type="text/javascript"></script>
+<!--end::Base Scripts -->
+<!--begin::Page Vendors -->
+<script src="assets/vendors/custom/fullcalendar/fullcalendar.bundle.js" type="text/javascript"></script>
+<!--end::Page Vendors -->
+<!--begin::Page Snippets -->
+<script src="assets/app/js/dashboard.js" type="text/javascript"></script>
+<!--end::Page Snippets -->
+</body>
+<!-- end::Body -->
+</html>
