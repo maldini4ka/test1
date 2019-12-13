@@ -46,7 +46,7 @@
                             <th>Category</th>
                             <th>Description</th>
 
-                            <th>Сеансы:</th>
+                            {% if is_granted('ROLE_USER') %} <th>Сеансы:</th>{% endif %}
                         </tr>
                         </thead>
                         <tbody>
@@ -59,14 +59,13 @@
                                 <td>{{ result.description }}</td>
 
                                 <td>
-                                    <a href="{{ path('film_show', {'id': result.id}) }}">show</a>
-                                    <a href="{{ path('film_edit', {'id': result.id}) }}">edit</a>
+                                    {% if is_granted('ROLE_USER') %}  <a href="{{ path('film_show', {'id': result.id}) }}"><button type="button" class="btn btn-outline-info">Выбрать сеанс</button></a>{% endif %}
                                 </td>
                             </tr>
-                        {% else %}
-                            <tr>
-                                <td colspan="6">no records found</td>
-                            </tr>
+{#                        {% else %}#}
+{#                            <tr>#}
+{#                                <td colspan="6">no records found</td>#}
+{#                            </tr>#}
                         {% endfor %}
                         </tbody>
                     </table>

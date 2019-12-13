@@ -37,13 +37,14 @@
                 <!--Begin::Main Portlet-->
                 <div class="row">
 
-                    <table class="table">
+                    <table class="table table-striped table-dark">
                         <thead>
                         <tr>
                             <th>Дата:</th>
                             <th>Время начала:</th>
                             <th>Стоимость билета:</th>
                             <th>Фильм:</th>
+                            <th></th>
                             <th></th>
                         </tr>
                         </thead>
@@ -54,17 +55,29 @@
                                 <td>{{ sean.time ? sean.time|date('H:i:s') : '' }}</td>
                                 <td>{{ sean.price }}</td>
                                 <td>{{ sean.filmid }}</td>
+
                                 <td>
-                                    <a href="{{ path('seans_show', {'id': sean.id}) }}">Выбрать сеанс.</a>
+                                    {% if is_granted('ROLE_USER') %}
+                                    <a href="{{ path('seans_show', {'id': sean.id}) }}"><button type="button" class="btn btn-outline-info">Выбрать сеанс.</button></a>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if is_granted('ROLE_ADMIN') %}
+                                        <a href="{{ path('seans_edit', {'id': sean.id}) }}"><button type="button" class="btn btn-outline-info">Редактировать сеанс.</button></a>
+                                    {% endif %}
                                 </td>
                             </tr>
+
                         {% else %}
                             <tr>
                                 <td colspan="5">no records found</td>
                             </tr>
+                            <hr>
                         {% endfor %}
                         </tbody>
                     </table>
+
+
 
 
                 </div>
@@ -72,7 +85,9 @@
 
 
 
-
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a href="/seans/new"><button type="button" class="btn btn-outline-info">Создать новый сеанс.</button></a>
+                {% endif %}
 
             </div>
         </div>

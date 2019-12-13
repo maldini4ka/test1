@@ -46,19 +46,35 @@
 
 
                         <tr>
-                            <th>Category</th>
+                            <th>Категория</th>
                             <td>{{ film.category }}</td>
                         </tr>
                         <tr>
-                            <th>Description</th>
+                            <th>Описание</th>
                             <td>{{ film.description }}</td>
                         </tr>
                         <tr>
                             <th>Сеансы</th>
                             <td>
-                            {% for seans in seanses %}
-                                {{ seans.date ? seans.date|date('d-m-Y') : '' }}
-                                {% endfor %}
+                                <table class="table table-sm">
+
+
+                                    {% for seans in seanses %}
+                                        <tr>
+                                            <td>
+                                                {{ seans.date ? seans.date|date('d-m-Y') : '' }}
+                                            <td>
+                                                {{ seans.time ? seans.time|date('H:i') : '' }}
+                                            </td>
+                                            <td>
+                                                <a href="/seans/{{ seans.id }}"><button type="button" class="btn btn-outline-info">Купить билет</button></a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+
+
+
+                                </table>
                             </td>
                         </tr>
 

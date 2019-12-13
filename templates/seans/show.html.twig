@@ -68,7 +68,7 @@
                             <th>Список мест:</th>
                             <td>
 
-                                <table class="table table-sm"">
+                                <table class="table table-sm">
 
                                     <tbody>
                                             {% for j in 1..seats.rows %}
@@ -76,7 +76,7 @@
 
                                                      {% for i in 1..seats.SeatsInRow %}
                                                         <td>
-                                                            <span class="badge badge-success">{{ j }}.{{ i }}</span>
+                                                            <span class="badge badge-success" id="{{ j }}{{ i }}" onClick="openPlace({{ j }},{{ i }})">{{ j }}.{{ i }}</span>
                                                         </td>
                                                      {% endfor %}
 
@@ -95,7 +95,7 @@
                         </tbody>
                     </table>
 
-                    <a href="{{ path('seans_index') }}">back to list</a>
+                    <a href="{{ path('seans_index') }}">Список всех сеансов</a>
 
                     
 

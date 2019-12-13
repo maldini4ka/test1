@@ -17,6 +17,8 @@
 
         {{ include('leftsidebar.html.twig') }}
 
+
+
         <div class="m-grid__item m-grid__item--fluid m-wrapper">
 
             <!-- BEGIN: Subheader -->
@@ -44,9 +46,9 @@
                                 <div class="m-portlet__head m-portlet__head--fit">
                                     <div class="m-portlet__head-caption">
                                         <div class="m-portlet__head-action">
-                                            <a href="/film/category/{{ result.category }}" > <button type="button" class="btn btn-sm m-btn--pill  btn-brand">
-                                                {{ result.category }}
-                                            </button></a>
+                                            <a href="/film/category/{{ result.category }}" > <button type="button" class="btn btn-primary btn-sm">
+                                                    {{ result.category }}
+                                                </button></a>
                                         </div>
                                     </div>
                                 </div>
@@ -67,10 +69,8 @@
                                             </div>
                                         </div>
                                         <div class="m-widget19__action">
-                                            <a href="/film/{{ result.id }}">
-                                                <button type="button" class="btn m-btn--pill btn-secondary m-btn m-btn--hover-brand m-btn--custom">
-                                                    Выбрать сеанс.
-                                                </button></a>
+                                            {% if is_granted('ROLE_USER') %} <a href="/film/{{ result.id }}">
+                                                <button type="button" class="btn btn-outline-info">Выбрать сеанс</button></a>{% endif %}
                                         </div>
                                     </div>
                                 </div>

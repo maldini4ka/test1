@@ -64,7 +64,7 @@ class FilmController extends AbstractController
 
         $seanses =$this->getDoctrine()
             ->getRepository(Seans::class)
-            ->findBy(['filmid' => $film]);
+            ->findBy(['filmid' => $film],['date'=>'ASC', 'time'=>'ASC']);
 
 
         return $this->render('film/show.html.twig', [

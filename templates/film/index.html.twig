@@ -58,9 +58,13 @@
                                 <td>{{ film.category }}</td>
                                 <td>{{ film.description }}</td>
 
-                                <td>
-                                    <a href="{{ path('film_show', {'id': film.id}) }}">show</a>
-                                    <a href="{{ path('film_edit', {'id': film.id}) }}">edit</a>
+                                <td>{% if is_granted('ROLE_USER') %}
+                                    <a href="{{ path('film_show', {'id': film.id}) }}"><button type="button" class="btn btn-outline-info">Выбрать сеанс</button></a>
+                                    {% endif %}
+                                    {% if is_granted('ROLE_ADMIN') %}
+                                    <a href="{{ path('film_edit', {'id': film.id}) }}"><button type="button" class="btn btn-outline-info">Редактировать фильм</button></a>
+
+                                    {% endif %}
                                 </td>
                             </tr>
                         {% else %}
@@ -75,12 +79,16 @@
                 <!--End::Main Portlet-->
 
 
-
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a href="/film/new"><button type="button" class="btn btn-outline-info">Создать новый фильм.</button></a>
+                {% endif %}
 
 
             </div>
         </div>
     </div>
+
+
     <!-- end:: Body -->
     {% include ('footer.html.twig') %} }
 
